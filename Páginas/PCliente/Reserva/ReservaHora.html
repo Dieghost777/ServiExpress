@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserva de Hora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="ReservaHora.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Reserva de Hora</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="history.go(-1); return false;">Volver</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container container-form mt-4">
+    <div class="card">
+        <div class="card-body">
+            <form id="reservaForm">
+                <div class="mb-3">
+                    <label for="servicio" class="form-label">Selecciona un servicio:</label>
+                    <select class="form-select" id="servicio" name="servicio">
+                        <option value="" selected>Selecciona un servicio</option>
+                        <!-- Opciones del servicio se cargarán aquí -->
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="fecha" class="form-label">Fecha:</label>
+                    <input type="date" class="form-control" id="fecha" name="fecha">
+                </div>
+                
+                <div class="mb-3 reserva-horario">
+                    <h1>Horario de Reservas de las 12 del día hasta las 7 de la tarde</h1>
+                    <label for="hora" class="form-label">Hora:</label>
+                    <input type="time" class="form-control" id="hora" name="hora" min="12:00" max="19:00">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Reservar</button>
+            </form>
+            <div class="error-message" id="error-message"></div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="ReservaHora.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Cliente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+     
+       
+        <h2 class="text-center mb-4">Registro de Cliente</h2>
+
+        <ul class="nav nav-pills mb-3" id="myTabs">
+            <li class="nav-item">
+                <a href="/ServiExpress/Páginas/index.html" class="back-to-login mr-2">Volver al login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" id="datosPersonales-tab" data-toggle="pill" href="#datosPersonales">Datos Personales</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="datosUsuario-tab" data-toggle="pill" onclick="validarDatosPersonales()" href="#datosUsuario">Datos de Usuario</a>
+            </li>
+        </ul>
+
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="datosPersonales">
+                    <div class="form-group">
+                        <label for="nombre_cli">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre_cli" name="nombre_cli" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appaterno_cli">Apellido Paterno:</label>
+                        <input type="text" class="form-control" id="appaterno_cli" name="appaterno_cli" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apmaterno_cli">Apellido Materno:</label>
+                        <input type="text" class="form-control" id="apmaterno_cli" name="apmaterno_cli" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion_cli">Dirección:</label>
+                        <input type="text" class="form-control" id="direccion_cli" name="direccion_cli" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fono_cli">Teléfono:</label>
+                        <input type="tel" class="form-control" id="fono_cli" maxlength="9" name="fono_cli" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="correo_cl">Correo Electrónico:</label>
+                        <input type="email" class="form-control d-block" id="correo_cl" name="correo_cl" required>
+                        <div class="error-message" id="error-correo"></div>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="validarDatosPersonales()">Siguiente</button>
+                    <div id="errores-registro"></div>
+
+                </div>
+
+                <div class="tab-pane fade" id="datosUsuario">
+                    <div class="form-group">
+                        <label for="nombre_usuario">Nombre de Usuario:</label>
+                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rut">RUT:</label>
+                        <input type="text" class="form-control" id="rut" name="rut" maxlength="11" onblur="formatearRutInput()" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Contraseña:</label>
+                        <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                    </div>
+                    <button type="button" class="btn btn-success" name="submit" onclick="verificarDisponibilidad()">Registrar</button>
+                 
+                    <div id="errores-registro-datos-usuario"></div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="PRscript.js"></script>
+</body>
+</html>

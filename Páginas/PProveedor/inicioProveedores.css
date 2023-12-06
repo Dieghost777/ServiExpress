@@ -1,0 +1,271 @@
+/* Estilos para el navbar */
+.navbar {
+    background-color: #333;
+    color: white;
+}
+/* estilos.css */
+.boton-generar-informe {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.boton-generar-informe:hover {
+    background-color: #45a049;
+}
+
+#verProductos h2 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: white;
+}
+.btn-actualizar {
+    /* Estilos para el botón de actualizar */
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn-eliminarr {
+    /* Estilos para el botón de eliminar */
+    background-color: #f44336;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* Estilos para la barra lateral */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 10px 8px 10px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    display: block;
+}
+
+.sidenav a.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.sidenav a:hover {
+    background-color: #ddd;
+    color: #333;
+}
+
+.cancelar-reserva {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Nuevo estilo para la selección */
+.sidenav a.selected {
+    background-color: #ddd;
+    color: #333;
+    border-left: 5px solid #007bff; /* Borde izquierdo azul para resaltar */
+}
+
+/* Estilos para la barra lateral */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.main {
+    margin-left: 220px; 
+}
+
+.table {
+    margin-top: 20px; 
+}
+
+#verDatosUsuario {
+    background-color: #fff;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+#verDatosUsuario h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#verDatosUsuario label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#verDatosUsuario input[type="text"],
+#verDatosUsuario input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#verDatosUsuario input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1877f2;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#verDatosUsuario input[type="submit"]:hover {
+    background-color: #166fe5;
+}
+
+.cerrar-sesion {
+    color: red; /* Cambia el color del texto a rojo (puedes elegir el color que desees) */
+    font-weight: bold; /* Hace que el texto sea más grueso para resaltarlo */
+    /* Otros estilos que desees aplicar */
+}
+
+/* Estilos para el formulario de registro de productos */
+#registrarProducto {
+    display: none;
+    background-color: #fff;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+#registrarProducto h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#registrarProducto label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#registrarProducto input[type="text"],
+#registrarProducto input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#registrarProducto input[type="button"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1877f2;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#registrarProducto input[type="button"]:hover {
+    background-color: #166fe5;
+}
+
+
+#confirmarEntrega {
+    display: none;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#confirmarEntrega h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#confirmarEntrega label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#confirmarEntrega select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#confirmarEntrega button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#confirmarEntrega button:hover {
+    background-color: #45a049;
+}
+
+#mensajeStock {
+    margin-top: 15px;
+    font-weight: bold;
+    color: red;
+}

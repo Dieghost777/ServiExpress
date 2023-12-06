@@ -1,0 +1,141 @@
+/* Estilos para el navbar */
+.navbar {
+    background-color: #333;
+    color: white;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: white;
+}
+
+/* Estilos para la barra lateral */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 10px 8px 10px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    display: block;
+}
+
+.sidenav a.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.sidenav a:hover {
+    background-color: #ddd;
+    color: #333;
+}
+
+.cancelar-reserva {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Nuevo estilo para la selección */
+.sidenav a.selected {
+    background-color: #ddd;
+    color: #333;
+    border-left: 5px solid #007bff; /* Borde izquierdo azul para resaltar */
+}
+
+/* Estilos para la barra lateral */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.main {
+    margin-left: 220px; /* Ancho de la barra lateral más un pequeño margen */
+}
+
+/* Estilos para las tablas */
+.table {
+    margin-top: 20px; /* Espacio superior para compensar la barra de navegación */
+}
+
+/* Estilos para la sección de datos del usuario */
+/* Estilos para la sección de datos del usuario */
+/* Estilos para la sección de datos del usuario estilo Facebook */
+#verDatosUsuario {
+    background-color: #fff;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+#verDatosUsuario h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#verDatosUsuario label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#verDatosUsuario input[type="text"],
+#verDatosUsuario input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#verDatosUsuario input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1877f2;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#verDatosUsuario input[type="submit"]:hover {
+    background-color: #166fe5;
+}
+
+.cerrar-sesion {
+    color: red; /* Cambia el color del texto a rojo (puedes elegir el color que desees) */
+    font-weight: bold; /* Hace que el texto sea más grueso para resaltarlo */
+    /* Otros estilos que desees aplicar */
+}
