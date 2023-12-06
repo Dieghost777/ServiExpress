@@ -9,6 +9,30 @@ function mostrarSeccion(idSeccion) {
     }
 }
 
+
+function cerrarSesion() {
+    fetch('datosproveedor.php?cerrar_sesion=true', {
+        method: 'POST'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error en la petición: ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            window.location.replace('/ServiExpress/Páginas/index.html');
+        } else {
+            console.error(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error en la petición:', error);
+    });
+}
+
+
 $(document).ready(function() {
     $('#formularioProducto').submit(function(event) {
         event.preventDefault();
@@ -59,7 +83,6 @@ $(document).ready(function() {
 
 
 
-// Definir las funciones en un ámbito global
 function obtenerProductosProveedor() {
     $.ajax({
         url: 'obtener_productos_proveedor.php',
@@ -123,24 +146,23 @@ function mostrarProductos(productos) {
 
         var actualizarBtn = document.createElement('button');
         actualizarBtn.textContent = 'Actualizar Stock';
-        actualizarBtn.className = 'btn-actualizar'; // Aplica la clase al botón
+        actualizarBtn.className = 'btn-actualizar'; 
 
         actualizarBtn.onclick = function() {
             var nuevoStock = prompt('Ingrese el nuevo stock:');
             if (nuevoStock !== null) {
-                actualizarStock(producto.id_producto, nuevoStock); // Corregir el nombre del campo de ID según tu estructura
+                actualizarStock(producto.id_producto, nuevoStock); 
             }
         };
 
         var eliminarBtn = document.createElement('button');
         eliminarBtn.textContent = 'Eliminar Producto';
-        eliminarBtn.className = 'btn-eliminarr'; // Aplica la clase al botón
-
+        eliminarBtn.className = 'btn-eliminarr'; 
         eliminarBtn.onclick = function() {
 
             var confirmarEliminar = confirm('¿Estás seguro que deseas eliminar este producto?');
             if (confirmarEliminar) {
-                eliminarProducto(producto.id_producto); // Corregir el nombre del campo de ID según tu estructura
+                eliminarProducto(producto.id_producto); 
             }
         };
 
@@ -161,17 +183,16 @@ function mostrarProductos(productos) {
 
 
 function actualizarStock(idProducto, nuevoStock) {
-    console.log('ID del producto:', idProducto); // Imprimir la ID del producto
+    console.log('ID del producto:', idProducto); 
     $.ajax({
         type: 'POST',
-        url: 'actualizar_stock.php', // Reemplaza con la ruta correcta
+        url: 'actualizar_stock.php',
         data: {
             id_producto: idProducto,
             nuevo_stock: nuevoStock
         },
         success: function(response) {
             console.log('Producto actualizado:', response);
-            // Vuelve a cargar los productos después de la actualización
             obtenerProductosProveedor();
         },
         error: function(xhr, status, error) {
@@ -189,13 +210,12 @@ function actualizarStock(idProducto, nuevoStock) {
 function eliminarProducto(idProducto) {
     $.ajax({
         type: 'POST',
-        url: 'eliminar_producto.php', // Reemplaza con la ruta correcta
+        url: 'eliminar_producto.php', 
         data: {
             id_producto: idProducto
         },
         success: function(response) {
             console.log('Producto eliminado:', response);
-            // Vuelve a cargar los productos después de la eliminación
             obtenerProductosProveedor();
         },
         error: function(xhr, status, error) {
@@ -212,13 +232,12 @@ function eliminarProducto(idProducto) {
 
 function cargarDatosUsuario() {
     $.ajax({
-        url: 'datosproveedor.php', // Reemplaza 'ruta_al_script_php.php' con la ubicación de tu script PHP
+        url: 'datosproveedor.php', 
         method: 'GET',
         success: function(response) {
             var datosUsuario = JSON.parse(response);
             var datosUsuarioDiv = document.getElementById('datosUsuarioDiv');
 
-            // Creamos una lista con los datos del usuario y la agregamos al div
             var listaDatos = '<ul>';
             for (var clave in datosUsuario) {
                 listaDatos += '<li><strong>' + clave + ':</strong> ' + datosUsuario[clave] + '</li>';
@@ -240,14 +259,12 @@ function cargarDatosUsuario() {
 function generarInformePDF() {
     const doc = new jsPDF();
 
-    // Obtener datos de la empresa logeada a través de AJAX
     $.ajax({
-        url: 'datosproveedor.php', // Ruta hacia el script PHP que obtiene los datos del proveedor
+        url: 'datosproveedor.php', 
         method: 'GET',
         success: function(response) {
             const datosProveedor = JSON.parse(response);
 
-            // Agregar los datos al documento PDF
             doc.setFont('helvetica', 'bold');
             doc.setFontSize(20);
             doc.text('Informe de Productos', 105, 20, { align: 'center' });
@@ -259,40 +276,33 @@ function generarInformePDF() {
             doc.text(`Contacto: ${datosProveedor['Contacto']}`, 20, 60);
             doc.text(`Correo: ${datosProveedor['Correo']}`, 20, 70);
 
-            // Obtener la tabla de productos y su contenido
             const tabla = document.getElementById('tablaProductos');
             const tablaConfig = { startY: 90 };
 
-            // Ocultar las columnas que tienen la clase 'hiddenInPDF' antes de generar el PDF
             const columnasOcultas = tabla.querySelectorAll('.hiddenInPDF');
             columnasOcultas.forEach(columna => {
                 columna.style.display = 'none';
             });
 
-            // Obtener solo las primeras cuatro columnas para generar el PDF
             const columnasParaPDF = [...tabla.querySelectorAll('thead th')].slice(0, 4);
             const filasParaPDF = [...tabla.querySelectorAll('tbody tr')].map(tr =>
                 [...tr.querySelectorAll('td')].slice(0, 4)
             );
 
-            // Generar el PDF con las primeras cuatro columnas de la tabla
             doc.autoTable({
                 head: [columnasParaPDF.map(col => col.textContent.trim())],
                 body: filasParaPDF.map(row => row.map(cell => cell.textContent.trim())),
                 ...tablaConfig
             });
 
-            // Mostrar nuevamente las columnas ocultas después de generar el PDF
             columnasOcultas.forEach(columna => {
                 columna.style.display = ''; // Restaurar el estilo original
             });
 
-            // Agregar la fecha de emisión al pie del documento
             const fechaEmision = new Date().toLocaleDateString();
             doc.setFontSize(10);
             doc.text(`Fecha de Emisión: ${fechaEmision}`, 105, doc.internal.pageSize.height - 10, { align: 'center' });
 
-            // Guardar el archivo PDF con un nombre específico
             doc.save('informe_productos.pdf');
         },
         error: function() {
@@ -339,7 +349,6 @@ function mostrarEntregasRealizadas(fechaInicio, fechaFin) {
             tablaEntregas.className = 'table';
 
             if (entregas.length > 0) {
-                // Crea la cabecera de la tabla
                 const cabecera = tablaEntregas.createTHead();
                 const filaCabecera = cabecera.insertRow();
                 const titulos = ['Entrega realizadas'];
@@ -350,7 +359,6 @@ function mostrarEntregasRealizadas(fechaInicio, fechaFin) {
                     filaCabecera.appendChild(th);
                 });
 
-                // Crea el cuerpo de la tabla con los datos de las entregas
                 const cuerpoTabla = tablaEntregas.createTBody();
                 entregas.forEach(entrega => {
                     const fila = cuerpoTabla.insertRow();
@@ -358,7 +366,6 @@ function mostrarEntregasRealizadas(fechaInicio, fechaFin) {
                     celda.textContent = entrega;
                 });
 
-                // Limpiar el contenido actual antes de agregar las nuevas entregas
                 const contenedorTabla = document.getElementById('tablaEntregasRealizadas');
                 while (contenedorTabla.firstChild) {
                     contenedorTabla.removeChild(contenedorTabla.firstChild);
@@ -370,7 +377,6 @@ function mostrarEntregasRealizadas(fechaInicio, fechaFin) {
                 return;
             }
 
-            // Agrega la tabla al div 'tablaEntregasRealizadas'
             document.getElementById('tablaEntregasRealizadas').appendChild(tablaEntregas);
         },
         error: function() {
@@ -419,7 +425,14 @@ function cargarOrdenesProveedor() {
 
                 jCombo.addEventListener('change', function() {
                     const idOrdenSeleccionada = this.options[this.selectedIndex].getAttribute('data-id-orden');
+                    const productoSolicitado = this.options[this.selectedIndex].textContent.split(' - ')[2];
+                    const cantidad = parseInt(this.options[this.selectedIndex].textContent.split(' - ')[3].split(': ')[1]);
+                    
+                
                     console.log('ID de la orden seleccionada:', idOrdenSeleccionada);
+                    console.log('Producto solicitado:', productoSolicitado);
+                    console.log('Cantidad:', cantidad);
+            
                 });
             } else {
                 const option = document.createElement("option");
@@ -472,15 +485,38 @@ function cargarEmpleados() {
 }
 
 
+
+
+function obtenerProductoSolicitado() {
+    const selectedOptionText = document.getElementById("jcomboOrdenes").options[document.getElementById("jcomboOrdenes").selectedIndex].textContent;
+    const splitText = selectedOptionText.split(' - ');
+    return splitText[2];
+}
+
+function obtenerCantidad() {
+    const selectedOptionText = document.getElementById("jcomboOrdenes").options[document.getElementById("jcomboOrdenes").selectedIndex].textContent;
+    const splitText = selectedOptionText.split(' - ');
+    const cantidadText = splitText[3].split(': ')[1];
+    return parseInt(cantidadText);
+}
+
+
+
+
+
 function confirmarEntrega() {
     const fechaRecepcion = obtenerFechaSistema();
     const idOrden = document.getElementById("jcomboOrdenes").value;
     const idEmpleado = document.getElementById("empleado").value;
+    const productoSolicitado = obtenerProductoSolicitado();
+    const cantidad = obtenerCantidad();
 
     // Imprimir los datos que se enviarán en la solicitud AJAX
     console.log("Fecha de recepción:", fechaRecepcion);
     console.log("ID de la orden:", idOrden);
     console.log("ID del empleado:", idEmpleado);
+    console.log("Producto solicitado:", productoSolicitado);
+    console.log("Cantidad:", cantidad);
 
     $.ajax({
         url: 'entrega.php',
@@ -488,12 +524,13 @@ function confirmarEntrega() {
         data: {
             fecha_recep: fechaRecepcion,
             Orden_pedido_id_orden: idOrden,
-            Orden_pedido_Empleado_id_empleado: idEmpleado
+            Orden_pedido_Empleado_id_empleado: idEmpleado,
+            producto_recibido: productoSolicitado,
+            cantidad: cantidad
         },
         success: function(response) {
-            console.log(response); // Manejar la respuesta del servidor aquí
-            location.reload(); // O actualiza solo la sección relevante con nuevos datos
-
+            console.log(response);
+            location.reload();
         },
         error: function() {
             console.log('Error al enviar la solicitud AJAX');
@@ -502,30 +539,24 @@ function confirmarEntrega() {
 }
 
 
+
 function obtenerFechaSistema() {
     const fechaActual = new Date();
     const dia = String(fechaActual.getDate()).padStart(2, '0');
-    const mes = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Sumar 1 porque enero es 0
+    const mes = String(fechaActual.getMonth() + 1).padStart(2, '0'); 
     const anio = fechaActual.getFullYear();
     return `${anio}-${mes}-${dia}`;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Llenar los combos y establecer la fecha al cargar el DOM
     cargarOrdenesProveedor();
     cargarEmpleados();
     document.getElementById("fechaRecepcion").value = obtenerFechaSistema();
 });
 
 
-// Llamar a la función para cargar empleados cuando se cargue la página
 cargarEmpleados();
 
-
-
-
-
 window.onload = function() {
-
     cargarEmpleadosProveedor();
 };

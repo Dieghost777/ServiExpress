@@ -48,6 +48,10 @@ if ($resultadoUsuario !== false) {
         if ($idTipoUsuario == 2) { // Si el usuario es un proveedor
             $_SESSION['id_proveedor'] = $usuario[$columnaID];
         }
+        if ($idTipoUsuario == 3) {
+            $_SESSION['id_empleado'] = $usuario[$columnaID];
+
+        }
         $_SESSION['id_usuario'] = $usuario[$columnaID]; 
         $response = array('success' => true, 'message' => 'Usuario encontrado');
         echo json_encode($response);
