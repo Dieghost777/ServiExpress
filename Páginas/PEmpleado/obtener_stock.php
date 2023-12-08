@@ -15,7 +15,8 @@ $idProveedor = isset($_GET['idProveedor']) ? $_GET['idProveedor'] : null;
 $nombreProducto = isset($_GET['nombreProducto']) ? $_GET['nombreProducto'] : null;
 
 if ($idProveedor !== null && $nombreProducto !== null) {
-    $sql = "SELECT id_producto, stockDisponible FROM productos_proveedor WHERE id_proveedor = $idProveedor AND nombre_producto = '$nombreProducto'";
+    $sql = "SELECT id_producto, stockDisponible FROM productos_proveedor WHERE id_proveedor = $idProveedor AND nombre_producto = '$nombreProducto'
+    and stockDisponible>0";
     
     $result = $conn->query($sql);
 

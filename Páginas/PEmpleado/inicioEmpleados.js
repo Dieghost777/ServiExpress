@@ -10,10 +10,28 @@ function mostrarSeccion(idSeccion) {
 }
 
 // Función para cerrar la sesión
-function cerrarSesion() {
-    // Tu lógica para cerrar sesión aquí
-}
 
+function cerrarSesion() {
+    fetch('obtener_datos_empleado.php?cerrar_sesion=true', {
+        method: 'POST'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error en la petición: ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            window.location.replace('/ServiExpress/Páginas/index.html');
+        } else {
+            console.error(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error en la petición:', error);
+    });
+}
 // Esta parte asegura que se muestre la primera sección al cargar la página
 window.onload = function() {
     // Mostrar la primera sección por defecto
@@ -197,6 +215,192 @@ $('#boton-solicitar').on('click', function () {
     crearOrdenPedido();
 });
 
+//BOLETTASSSSSSSSSSS
+
+$(document).ready(function () {
+    $('#nombreClienteBoletas').on('keyup', function () {
+        buscarBoletas();
+    });
+
+    $('#verBoletas').hide(); // Ocultar la tabla al inicio
+
+    function buscarBoletas() {
+        const nombreCliente = $('#nombreClienteBoletas').val();
+
+        $.ajax({
+            url: 'buscar_boletas.php',
+            type: 'GET',
+            data: { nombreCliente: nombreCliente },
+            dataType: 'json',
+            success: function (data) {
+                if (data.length > 0) {
+                    mostrarBoletas(data);
+                } else {
+                    $('#cuerpoTablaBoletas').empty().append('<tr><td colspan="7">No se encontraron boletas para este cliente.</td></tr>');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function mostrarBoletas(boletas) {
+        const cuerpoTabla = $('#cuerpoTablaBoletas');
+        cuerpoTabla.empty();
+
+        boletas.forEach(function (boleta) {
+            cuerpoTabla.append(`
+                <tr>
+                    <td>${boleta['ID Boleta']}</td>
+                    <td>${boleta['Nombre Cliente']}</td>
+                    <td>${boleta['Rut']}</td>
+                    <td>${boleta['Fecha Emisión']}</td>
+                    <td>${boleta['Descripción Servicio']}</td>
+                    <td>${boleta['Monto']}</td>
+                    <td><button onclick="cancelarBoleta(${boleta['ID Boleta']})">Cancelar</button></td>
+                </tr>
+            `);
+        });
+
+        $('#verBoletas').show();
+    }
+
+    function cancelarBoleta(idBoleta) {
+        // Lógica para cancelar la boleta con el ID proporcionado
+        // Puedes realizar una nueva petición AJAX al servidor para realizar la cancelación
+        // Actualizar la tabla o mostrar un mensaje de confirmación
+    }
+
+    // Esta función carga los datos de los clientes al cargar la página
+    
+    function cargarClientes() {
+        fetch('mostrar_clientes.php')
+            .then(response => response.json())
+            .then(data => {
+                mostrarClientes(data);
+                document.getElementById('inputBuscarCliente').addEventListener('input', function() {
+                    filtrarClientes(data);
+                });
+            });
+    }
+    
+    function mostrarClientes(clientes) {
+        const cuerpoTabla = document.getElementById('cuerpoTablaClientes');
+        cuerpoTabla.innerHTML = '';
+    
+        clientes.forEach(cliente => {
+            const fila = document.createElement('tr');
+            fila.innerHTML = `
+                <td>${cliente.NOMBRE}</td>
+                <td>${cliente.RUT}</td>
+                <td>${cliente.CORREO}</td>
+                <td>${cliente.TELEFONO}</td>
+                <td>${cliente.DIRECCION}</td>
+            `;
+            cuerpoTabla.appendChild(fila);
+        });
+    }
+    
+    function filtrarClientes(clientes) {
+        const inputBuscar = document.getElementById('inputBuscarCliente').value.toLowerCase();
+        const cuerpoTabla = document.getElementById('cuerpoTablaClientes');
+        cuerpoTabla.innerHTML = '';
+    
+        clientes.forEach(cliente => {
+            const nombreCompleto = cliente.NOMBRE.toLowerCase();
+    
+            if (nombreCompleto.includes(inputBuscar)) {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${cliente.NOMBRE}</td>
+                    <td>${cliente.RUT}</td>
+                    <td>${cliente.CORREO}</td>
+                    <td>${cliente.TELEFONO}</td>
+                    <td>${cliente.DIRECCION}</td>
+                `;
+                cuerpoTabla.appendChild(fila);
+            }
+        });
+    }
+    
+    // Cargar todos los clientes al cargar la página
+    window.onload = cargarClientes;
+
+
+
+    
+
+$(document).ready(function () {
+    $('#filtroNombre').on('keyup', function () {
+        buscarReservas();
+    });
+
+    // Función para buscar reservas
+    function buscarReservas() {
+        const nombreCliente = $('#filtroNombre').val();
+
+        $.ajax({
+            url: 'buscar_reservas.php',
+            type: 'GET',
+            data: { nombreCliente: nombreCliente },
+            dataType: 'json',
+            success: function (data) {
+                mostrarReservas(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    // Función para mostrar las reservas en la tabla
+    function mostrarReservas(reservas) {
+        const cuerpoTabla = $('#cuerpoTablaReservas');
+        cuerpoTabla.empty();
+
+        reservas.forEach(function (reserva) {
+            cuerpoTabla.append(`
+                <tr>
+                    <td>${reserva['Nombre Cliente']}</td>
+                    <td>${reserva['Servicio Solicitado']}</td>
+                    <td>${reserva['Hora']}</td>
+                </tr>
+            `);
+        });
+    }
+
+    // Cargar todas las reservas al cargar el documento
+    buscarReservas();
+});
+
+$(document).ready(function () {
+    function cargarDatosEmpleado() {
+        $.ajax({
+            url: 'obtener_datos_empleado.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                mostrarDatosEmpleado(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function mostrarDatosEmpleado(empleado) {
+        $('#nombre').text(empleado.Nombre);
+        $('#apellidoPaterno').text(empleado['Apellido Paterno']);
+        $('#apellidoMaterno').text(empleado['Apellido Materno']);
+        $('#cargo').text(empleado.Cargo);
+        $('#rut').text(empleado.RUT);
+        $('#correo').text(empleado.Correo);
+    }
+
+    cargarDatosEmpleado();
+});
+
 
 
 
@@ -215,3 +419,4 @@ $(document).ready(function () {
 });
 
 
+})
