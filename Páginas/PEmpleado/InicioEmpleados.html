@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Perfil del Usuario</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="InicioEmpleados.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">ServiExpress</a>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <span class="nav-link">Bienvenido/a <span id="nombreUsuario"></span></span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidenav">
+        <a href="#" onclick="mostrarSeccion('generarOrdenPedido')">Generar orden de pedido</a>
+        <a href="#" onclick="mostrarSeccion('verBoletas')">Ver Boletas</a>
+        <a href="#" onclick="mostrarSeccion('verServiciosReservados')">Ver Servicios Reservados de Clientes</a>
+        <a href="#" onclick="mostrarSeccion('verDatosClientes')">Ver Datos de Clientes</a>
+        <a href="#" class="cerrar-sesion" onclick="cerrarSesion()">Cerrar Sesión</a>
+    </div>
+
+    <div class="main">
+        <div id="generarOrdenPedido" style="display: none;">
+            <div class="seleccion-proveedor">
+                <h3>Selecciona un proveedor:</h3>
+                <select id="proveedores">
+                    <!-- Opciones de proveedores -->
+
+                    <!-- ... -->
+                </select>
+            </div>
+        
+            <div class="seleccion-producto">
+                <h3>Selecciona un producto del proveedor:</h3>
+                <select id="productos">
+                    <!-- Opciones de productos del proveedor seleccionado -->
+
+                    <!-- ... -->
+                </select>
+            </div>
+        
+            <div class="stock-producto">
+                <h3>Stock del producto solicitado:</h3>
+                <p>Stock disponible: <span id="stock-disponible"></span></p>
+            </div>
+                
+            <div class="ingresa-cantidad">
+                <h3>Ingresa la cantidad deseada:</h3>
+                <input type="number" id="cantidad-deseada" min="1" max="100"> <!-- Ejemplo de rango de cantidad -->
+                <p class="mensaje-error-cantidad"></p>
+            </div>
+   
+        
+            <button id="boton-solicitar">Solicitar</button>
+            <div id="mensaje-error" style="display: none; color: red;"></div>
+            <div id="mensaje-exito" style="display: none; color: green;"></div>
+        </div>   
+
+
+</div>
+
+        <div id="verBoletas" style="display: none;">
+<h2>hola x2</h2>        </div>
+
+        <div id="verServiciosReservados" style="display: none;">
+            <!-- Contenido de Ver Servicios Reservados de Clientes -->
+        </div>
+
+        <div id="verDatosClientes" style="display: none;">
+            <!-- Contenido de Ver Datos de Clientes -->
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="inicioEmpleados.js"></script>
+
+    <script>
+        // Tu código JavaScript aquí
+    </script>
+</body>
+
+</html>

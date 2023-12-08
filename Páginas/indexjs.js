@@ -48,7 +48,7 @@ function verificarExistenciaUsuario() {
                 } else if (idTipoUsuario === '2') {
                     window.location.href = '../Páginas/PProveedor/InicioProveedores.html';
                 } else if (idTipoUsuario === '3') {
-                    window.location.href = '../PEmpleado/InicioEmpleados.html';
+                    window.location.href = '../Páginas/PEmpleado/InicioEmpleados.html';
                 }
             } else {
                 console.error('Usuario no encontrado');

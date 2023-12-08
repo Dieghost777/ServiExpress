@@ -16,13 +16,13 @@ $fechaInicio = $_GET['fecha_inicio'] ?? null;
 $fechaFin = $_GET['fecha_fin'] ?? null;
 
 if ($idProveedor !== null) {
-    $sql = "SELECT CONCAT('La Empresa ', p.nom_empresa, ' hace entrega del producto/s ', rp.producto_recibido, 
-    ' al empleado ', CONCAT(e.nombre_emp, ' ', e.appaterno_emp), 
-    ' Por la cantidad: ', rp.cantidad, ' el día ', rp.fecha_recep) as Recepcion 
-FROM recepcion_producto rp 
-INNER JOIN proveedor p ON p.id_proveedor = rp.Orden_pedido_Proveedor_id_proveedor 
-INNER JOIN empleado e ON e.id_empleado = rp.Orden_pedido_Empleado_id_empleado 
-WHERE rp.Orden_pedido_Proveedor_id_proveedor =  ?";
+    $sql = "SELECT CONCAT('La Empresa ', p.nom_empresa,
+    ' hace entrega de productos ', rp.producto_recibido, ' al empleado ', CONCAT(e.nombre_emp, ' ', e.appaterno_emp),
+    ' el día ', rp.fecha_recep) as Recepcion 
+    FROM recepcion_producto rp 
+    INNER JOIN proveedor p ON p.id_proveedor = rp.Orden_pedido_Proveedor_id_proveedor
+    INNER JOIN empleado e ON e.id_empleado = rp.Orden_pedido_Empleado_id_empleado 
+    WHERE rp.Orden_pedido_Proveedor_id_proveedor = ?";
 
     $params = "i"; // Tipo de dato de los parámetros: i (entero)
     $values = [$idProveedor]; // Valores de los parámetros
@@ -68,8 +68,4 @@ WHERE rp.Orden_pedido_Proveedor_id_proveedor =  ?";
 }
 
 $conn->close();
-
-
-
-
 ?>
