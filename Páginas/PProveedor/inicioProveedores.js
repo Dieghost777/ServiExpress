@@ -1,3 +1,5 @@
+
+
 function mostrarSeccion(idSeccion) {
     var secciones = document.querySelectorAll('.main > div');
     for (var i = 0; i < secciones.length; i++) {
@@ -260,7 +262,7 @@ function generarInformePDF() {
     const doc = new jsPDF();
 
     $.ajax({
-        url: 'datosproveedor.php', 
+        url: 'datosproveedor.php',
         method: 'GET',
         success: function(response) {
             const datosProveedor = JSON.parse(response);
@@ -310,6 +312,7 @@ function generarInformePDF() {
         }
     });
 }
+
 
 
 let contadorMensajes = 0;

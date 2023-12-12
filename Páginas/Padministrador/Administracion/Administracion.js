@@ -8,13 +8,33 @@ function mostrarSeccion(idSeccion) {
         seccionMostrada.style.display = 'block';
     }
 }
+mostrarSeccion('modificarBoleta');
+
+function cerrarSesion() {
+    fetch('cerrarsesion.php?cerrar_sesion=true', {
+        method: 'GET'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error en la petición: ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // Redireccionar a la página de inicio
+            window.location.replace('/ServiExpress/Páginas/index.html');
+        } else {
+            console.error(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error en la petición:', error);
+    });
+}
 
 
 $(document).ready(function() {
-    // Función para mostrar secciones
-
-
-    // Llenar la tabla con los datos de las boletas desde el servidor
     $.ajax({
         url: 'verboletas.php',
         type: 'GET',
@@ -25,8 +45,6 @@ $(document).ready(function() {
             console.error('Error al obtener los datos: ' + error);
         }
     });
-
-    // Manejar el clic en "Editar" en una fila de la tabla
     $('#tablaBoletas').on('click', '.editar-btn', function(event) {
         const fila = $(this).closest('tr');
         const idBoleta = fila.find('.id-boleta').text();
@@ -34,17 +52,17 @@ $(document).ready(function() {
         const fechaEmision = fila.find('.fecha-emision').text();
         const monto = fila.find('.monto').text();
 
-        // Llenar el formulario de edición con los datos de la fila
+ 
         $('#idBoleta').val(idBoleta);
         $('#nombreCliente').val(nombreCliente);
         $('#fechaEmision').val(fechaEmision);
         $('#monto').val(monto);
 
-        // Mostrar el formulario de edición y ocultar la tabla
+     a
         $('#tablaBoletas').hide();
         $('#formularioEdicion').show();
 
-        $('.card').show(); // Mostrar la tarjeta
+        $('.card').show(); 
     });
 
     // Manejar el envío del formulario de edición
@@ -62,21 +80,163 @@ $(document).ready(function() {
                 monto: monto
             },
             success: function(response) {
-                console.log(response); // Manejar la respuesta del servidor
-                // Aquí podrías actualizar la interfaz de usuario si la actualización fue exitosa
+                console.log(response); 
             },
             error: function(xhr, status, error) {
                 console.error('Error al actualizar los datos: ' + error);
-                // Manejar el error en la actualización si es necesario
             }
         });
     });
 
-    // Manejar el clic en el botón "Volver"
     $('#volverBtn').click(function() {
         $('#formularioEdicion').hide();
         $('#tablaBoletas').show();
-        $('.card').hide(); // Mostrar la tarjeta
+        $('.card').hide(); 
 
     });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const editarBotones = document.querySelectorAll(".editar-btn-servicio");
+    const eliminarBotones = document.querySelectorAll(".eliminar-servicio-btn");
+    const formularioEdicion = document.getElementById("formularioEdicionServicio");
+    const idServicioEdit = document.getElementById("idServicioEdit");
+    const descripcionEdit = document.getElementById("descripcionEdit");
+    const precioEdit = document.getElementById("precioEdit");
+    const tiempoEstimadoEdit = document.getElementById("tiempoEstimadoEdit");
+    const guardarCambiosBtn = document.getElementById("guardarCambiosEdit");
+    const volverBtnEdit = document.getElementById("volverBtnEdit");
+    const tablaServicios = document.getElementById("tablaServicios");
+
+    // Función para obtener y mostrar los servicios
+    function mostrarServicios() {
+        fetch("verservicios.php") 
+        .then(response => response.text())
+        .then(data => {
+        tablaServicios.innerHTML = data;
+
+        asignarEventosEditar();
+         })
+        .catch(error => {
+        console.error("Error al obtener servicios:", error);
+     });
+    }
+
+
+
+
+    $('#tablaServicios').on('click', '.editar-btn-servicio', function(event) {
+        const fila = $(this).closest('tr');
+        const idServicio = fila.find('.id-servicio').text();
+        const descripcion = fila.find('.descripcion-servicio').text();
+        const precio = fila.find('.precio-servicio').text();
+        const tiempoEstimado = fila.find('.tiempo-estimado').text();
+
+        // Llenar el formulario de edición con los datos de la fila
+        $('#idServicioEdit').val(idServicio);
+        $('#descripcionEdit').val(descripcion);
+        $('#precioEdit').val(precio);
+        $('#tiempoEstimadoEdit').val(tiempoEstimado);
+
+        // Mostrar el formulario de edición y ocultar la tabla
+        $('#tablaServicios').hide();
+        $('#formularioEdicionServicio').show();
+    });
+
+    function asignarEventosEditar() {
+        editarBotones.forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+        const idServicio = e.target.getAttribute("data-id");
+        console.log("Botón de edición clickeado para el servicio con ID:", idServicio);
+
+        idServicioEdit.value = idServicio;
+        formularioEdicion.style.display = "block";
+            });
+        });
+    }
+
+
+
+    function asignarEventosEliminar() {
+        const eliminarBotones = document.querySelectorAll(".eliminar-servicio-btn");
+    
+        eliminarBotones.forEach(function(btn) {
+            btn.addEventListener("click", function(e) {
+                const idServicio = e.target.getAttribute("data-id");
+                console.log("Botón de eliminación clickeado para el servicio con ID:", idServicio);
+                eliminarServicio(idServicio);
+            });
+        });
+    }
+    asignarEventosEliminar();
+
+
+
+    function eliminarServicio(idServicio) {
+        fetch("eliminarservicio.php", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'idServicio=' + idServicio
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Mensaje de éxito o error desde el servidor
+            mostrarServicios();
+        })
+        .catch(error => {
+            console.error("Error al eliminar servicio:", error);
+        });
+    }
+
+    // Función para guardar los cambios en un servicio
+    function guardarCambiosServicio() {
+        // Aquí puedes agregar la lógica para guardar los cambios en el servicio
+        // Por ejemplo:
+        const formData = new FormData();
+        formData.append('idServicio', idServicioEdit.value);
+        formData.append('descripcion', descripcionEdit.value);
+        formData.append('precio', precioEdit.value);
+        formData.append('tiempoEstimado', tiempoEstimadoEdit.value);
+
+        fetch("actualizarservicio.php", {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // Muestra la respuesta del servidor en la consola (para verificar)
+            window.alert("Datos Actualizados Correctamente");
+            location.reload();
+            formularioEdicion.style.display = "none";
+            // Aquí podrías agregar la lógica para mostrar nuevamente la tabla de servicios o actualizarla
+            mostrarServicios();
+        })
+        .catch(error => {
+            console.error("Error al actualizar servicio:", error);
+        });
+    }
+
+    mostrarServicios();
+
+    eliminarBotones.forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+            const idServicio = e.target.getAttribute("data-id");
+            console.log("Botón de eliminación clickeado para el servicio con ID:", idServicio);
+            eliminarServicio(idServicio);
+        });
+    });
+
+    guardarCambiosBtn.addEventListener("click", function() {
+        guardarCambiosServicio();
+    });
+
+    volverBtnEdit.addEventListener("click", function() {
+          $('#tablaServicios').show();
+        $('#formularioEdicionServicio').hide();
+        mostrarServicios();
+    });
+
 });

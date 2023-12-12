@@ -32,8 +32,8 @@
     <div class="sidenav">
         <a href="#" onclick="mostrarSeccion('modificarBoleta')">Modificar Boleta</a>
         <a href="#" onclick="mostrarSeccion('agregarNuevoServicio')">Agregar Nuevo Servicio</a>
-        <a href="#" onclick="mostrarSeccion('modificarServicioExistente')">Modificar Servicio Existente</a>
-        <a href="#" onclick="mostrarSeccion('cerrarSesion')">Cerrar Sesión</a>
+        <a href="#" onclick="mostrarSeccion('contenedorServicios')">Modificar Servicio Existente</a>
+        <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
     </div>
 
     <div class="main">
@@ -83,11 +83,54 @@
         
 
         <div id="agregarNuevoServicio" style="display: none;">
-<h2>Hola 2 </h2>        </div>
+     
+                <h2>Agregar Nuevo Servicio</h2>
+                <form id="formularioNuevoServicio">
+                    <label for="descripcion">Descripción del Servicio:</label>
+                    <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese el nombre del Servicio"><br><br>
+            
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" name="precio" step="1000" placeholder="Ingresa el Precio del Servicio" required><br><br>
+            
+                    <label for="tiempoEstimado">Tiempo Estimado:</label>
+                    <input type="text" id="tiempoEstimado" name="tiempoEstimado" placeholder="Ingresa el Tiempo Estimado" required><br><br>
+            
+                    <button type="submit">Agregar Servicio</button>
+                </form>
+     
+  </div>
 
-        <div id="modificarServicioExistente" style="display: none;">
-            <!-- Contenido para modificar un servicio existente -->
-        </div>
+
+  <div id="contenedorServicios">
+    <table id="tablaServicios" border="1">
+        <!-- Encabezados de la tabla -->
+        <thead>
+            <tr>
+                <th>ID SERVICIO</th>
+                <th>Descripción del Servicio</th>
+                <th>Precio</th>
+                <th>Tiempo Estimado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Filas se llenarán desde el servidor -->
+        </tbody>
+    </table>
+
+    <div id="formularioEdicionServicio" style="display: none;">
+        <input type="hidden" id="idServicioEdit" />
+        <label for="descripcionEdit">Descripción del Servicio:</label>
+        <input type="text" id="descripcionEdit" />
+        <label for="precioEdit">Precio:</label>
+        <input type="text" id="precioEdit" />
+        <label for="tiempoEstimadoEdit">Tiempo Estimado:</label>
+        <input type="text" id="tiempoEstimadoEdit" />
+        <button id="guardarCambiosEdit">Guardar Cambios</button>
+        <button id="volverBtnEdit">Volver</button>
+    </div>
+</div>
+
 
         <div id="cerrarSesion" style="display: none;">
             <!-- Contenido para cerrar sesión -->

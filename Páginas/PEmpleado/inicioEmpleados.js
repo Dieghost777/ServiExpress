@@ -32,9 +32,7 @@ function cerrarSesion() {
         console.error('Error en la petición:', error);
     });
 }
-// Esta parte asegura que se muestre la primera sección al cargar la página
 window.onload = function() {
-    // Mostrar la primera sección por defecto
     mostrarSeccion('generarOrdenPedido');
 };
 

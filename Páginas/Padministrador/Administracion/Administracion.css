@@ -109,46 +109,39 @@ header {
 
   
 
-  
+
 
   .card {
-    width: 400px;
-    margin: auto;
+    display: none;
+    background-color: #2f3136;
+    border-radius: 8px;
     padding: 20px;
-    background-color: #f2f2f2;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
-    color: #000;
-  }
-  
-  .card label {
-    display: block;
-    margin-bottom: 10px;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  .card input[type="text"],
-  .card button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-  }
-  
-  .card button {
-    background-color: #7289da;
-    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+/* Estilos para los inputs y botones dentro del formulario */
+.card input[type="text"],
+.card input[type="number"],
+.card button {
+    padding: 8px;
+    margin: 6px 0;
     border: none;
-    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: #40444b;
+    color: #ffffff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .card button:hover {
-    background-color: #5f73bc;
-  }
-  
+}
+
+.card input[type="text"]::placeholder,
+.card input[type="number"]::placeholder {
+    color: #b9bbbe;
+}
+
+.card button:hover {
+    background-color: #7289da;
+}
 
 
 
@@ -181,3 +174,116 @@ header {
     background-color: #5f73bc;
   }
   
+
+  #agregarNuevoServicio {
+    width: 500px; /* Ajusta el ancho según lo necesites */
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #202225;
+}
+
+#agregarNuevoServicio h2 {
+    text-align: center;
+}
+
+#formularioNuevoServicio label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px; /* Tamaño de letra para los labels */
+}
+
+#formularioNuevoServicio input[type="text"],
+#formularioNuevoServicio input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #72767d;
+    border-radius: 3px;
+    background-color: #36393f;
+    color: white;
+    font-size: 16px; /* Tamaño de letra para los inputs */
+}
+
+#formularioNuevoServicio button {
+    background-color: #7289da;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 18px; /* Tamaño de letra para el botón */
+}
+
+#formularioNuevoServicio button:hover {
+    background-color: #677bc4;
+}
+#tablaServicios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  #tablaServicios th,
+  #tablaServicios td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  #tablaServicios th {
+    background-color: #533838;
+  }
+  
+
+  
+  #tablaServicios .editar-servicio-btn,
+  #tablaServicios .eliminar-servicio-btn {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  #tablaServicios .editar-servicio-btn {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  #tablaServicios .eliminar-servicio-btn {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+
+  #formularioEdicionServicio {
+    display: none;
+    background-color: #2f3136;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+/* Estilos para los inputs y botones dentro del formulario */
+#formularioEdicionServicio input[type="text"],
+#formularioEdicionServicio button {
+    padding: 8px;
+    margin: 6px 0;
+    border: none;
+    border-radius: 4px;
+    background-color: #40444b;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#formularioEdicionServicio input[type="text"]::placeholder {
+    color: #b9bbbe;
+}
+
+#formularioEdicionServicio button:hover {
+    background-color: #7289da;
+}
+
+
