@@ -20,7 +20,6 @@ $fechaPedido = $_POST['fechaPedido'];
 $idEmpleado = $_SESSION['id_empleado'];
 $idProveedor = $_POST['idProveedor'];
 
-// Obtener la ID del producto directamente
 $stmt = $conn->prepare("SELECT id_producto, stockDisponible FROM productos_proveedor WHERE id_proveedor = ? AND id_producto = ?");
 $stmt->bind_param("ii", $idProveedor, $productoSolicitado);
 $stmt->execute();

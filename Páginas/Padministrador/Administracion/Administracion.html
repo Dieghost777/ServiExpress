@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="Administracion.css">
+    <style>
+        /* Estilos generales */
+       
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">ServiExpress</a>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <span class="nav-link">Bienvenido/a <span id="nombreUsuario"></span></span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidenav">
+        <a href="#" onclick="mostrarSeccion('modificarBoleta')">Modificar Boleta</a>
+        <a href="#" onclick="mostrarSeccion('agregarNuevoServicio')">Agregar Nuevo Servicio</a>
+        <a href="#" onclick="mostrarSeccion('modificarServicioExistente')">Modificar Servicio Existente</a>
+        <a href="#" onclick="mostrarSeccion('cerrarSesion')">Cerrar Sesión</a>
+    </div>
+
+    <div class="main">
+        <div id="modificarBoleta">
+            <table id="tablaBoletas" border="1">
+                <!-- Encabezados de la tabla -->
+                <thead>
+                    <tr>
+                        <th>ID BOLETA</th>
+                        <th>Nombre Cliente</th>
+                        <th>Fecha Emisión</th>
+                        <th>Monto</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas se llenarán desde el servidor -->
+                    <tr>
+                        <td class="id-boleta">1</td>
+                        <td class="nombre-cliente">Nombre Cliente</td>
+                        <td class="fecha-emision">Fecha Emisión</td>
+                        <td class="monto">Monto</td>
+                        <td><button class="editar-btn">Editar</button></td>
+                    
+
+                    </tr>
+                    <!-- Más filas se agregarán dinámicamente desde el servidor -->
+                </tbody>
+            </table>
+        
+            <!-- Formulario para editar -->
+            <div class="card" style="display: none;">
+                <!-- Formulario para editar -->
+                <form id="formularioEdicion" style="display: none;">
+                    <input type="hidden" id="idBoleta" />
+                    <label for="nombreCliente">Nombre Cliente:</label>
+                    <input type="text" id="nombreCliente" />
+                    <label for="fechaEmision">Fecha Emisión:</label>
+                    <input type="text" id="fechaEmision" />
+                    <label for="monto">Monto:</label>
+                    <input type="text" id="monto" />
+                    <button id="guardarCambios">Guardar Cambios</button>
+                    <button id="volverBtn">Volver</button>
+                </form>
+            </div>
+        </div>
+        
+
+        <div id="agregarNuevoServicio" style="display: none;">
+<h2>Hola 2 </h2>        </div>
+
+        <div id="modificarServicioExistente" style="display: none;">
+            <!-- Contenido para modificar un servicio existente -->
+        </div>
+
+        <div id="cerrarSesion" style="display: none;">
+            <!-- Contenido para cerrar sesión -->
+        </div>
+    </div>
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Agregar tus scripts al final del body para asegurar que se carguen después del DOM -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="Administracion.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script>
+        // Tu código JavaScript aquí
+    </script>
+</body>
+
+</html>

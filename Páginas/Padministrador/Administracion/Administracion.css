@@ -1,0 +1,183 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #36393f; /* Color de fondo principal */
+    color: #ffffff; /* Color del texto principal */
+}
+
+header {
+    background-color: #2f3136; /* Color de fondo para el encabezado */
+    color: #ffffff; /* Color del texto en el encabezado */
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar-brand {
+    color: yellow;
+
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-link {
+    color: #ffffff; /* Color de enlaces en el encabezado */
+    margin-right: 20px;
+}
+
+/* Estilos para el menú lateral */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #2f3136; /* Color de fondo para el menú lateral */
+    overflow-x: hidden;
+    padding-top: 20px;
+    border-right: 5px solid #ffc107; /* Borde amarillo */
+}
+
+.sidenav a {
+    padding: 10px 20px; /* Ajuste de relleno */
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff;
+    display: block;
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    border-bottom: 1px solid #000000; /* Línea separadora negra */
+}
+
+.sidenav a:first-child {
+    border-top: 1px solid #000000; /* Línea separadora negra para el primer elemento */
+}
+
+.sidenav a:hover {
+    background-color: #677bc4; /* Color de fondo al pasar el mouse */
+}
+
+.sidenav .cerrar-sesion {
+    margin-top: 20px;
+}
+
+/* Estilos para el contenido principal */
+.main {
+    margin-left: 220px;
+    padding: 20px;
+    background-color: #36393f; /* Color de fondo para el contenido principal */
+    color: #ffffff; /* Color del texto en el contenido principal */
+}
+
+
+
+
+/* Estilos para la tabla */
+#tablaBoletas {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #tablaBoletas th,
+  #tablaBoletas td {
+    border: 1px solid #b9a5a5;
+    padding: 8px;
+  }
+  
+  #tablaBoletas th {
+    background-color: #291a1a;
+  }
+  
+  .editar-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    background-color: #7289da;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .editar-btn:hover {
+    background-color: #5f73bc;
+  }
+
+  
+
+  
+
+  .card {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    color: #000;
+  }
+  
+  .card label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .card input[type="text"],
+  .card button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  
+  .card button {
+    background-color: #7289da;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card button:hover {
+    background-color: #5f73bc;
+  }
+  
+
+
+
+
+  /* Estilos para el formulario */
+  #formularioEdicion {
+    margin-top: 20px;
+  }
+  
+  #formularioEdicion label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  #formularioEdicion input[type="text"],
+  #formularioEdicion button {
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  #formularioEdicion button {
+    background-color: #7289da;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  #formularioEdicion button:hover {
+    background-color: #5f73bc;
+  }
+  

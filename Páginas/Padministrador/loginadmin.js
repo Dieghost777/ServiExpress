@@ -2,29 +2,29 @@ function verificarExistenciaUsuario() {
     var nombreUsuario = $('#nombreUsuarioadmin').val();
     var contrasena = $('#contrasenaadmin').val();
 
-
     $.ajax({
         type: 'POST',
         url: 'verificar_admin.php',
         data: {
             nombreUsuario: nombreUsuario,
-            contrasena: contrasena,
-         
+            contrasena: contrasena
         },
         success: function(response) {
-            var jsonResponse = JSON.parse(response);
-            console.log(jsonResponse);
+            try {
+                var jsonResponse = JSON.parse(response);
+                console.log(jsonResponse);
 
-            if (jsonResponse.success) {
-                        window.location.href = '../Páginas/PCliente/InicioClientes.html';
-             
-                
-            } else {
-                console.error('Usuario no encontrado');
+                if (jsonResponse.success) {
+                    window.location.href = '../Padministrador/Administracion/Administracion.html';
+                } else {
+                    console.error('Usuario no encontrado');
+                }
+            } catch (error) {
+                console.error('Error al analizar la respuesta JSON: ' + error);
             }
         },
-        error: function(error) {
-            console.error('Error en la solicitud AJAX: ' + error.status);
+        error: function(xhr, status, error) {
+            console.error('Error en la solicitud AJAX: ' + status);
         }
     });
 }

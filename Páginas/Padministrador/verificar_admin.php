@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 $server = "127.0.0.1:3308";
 $user = "root";
@@ -9,25 +7,26 @@ $db = "bddserviexpress";
 
 $conn = new mysqli($server, $user, $pass, $db);
 if ($conn->connect_error) {
-    die(json_encode(array('success' => false, 'message' => 'Conexión fallida: ' . $conn->connect_error)));
+    $response = array('success' => false, 'message' => 'Conexión fallida: ' . $conn->connect_error);
+    die(json_encode($response));
 }
 
-$sql = "SELECT * FROM administrador WHERE nombre_usuario = '$nombreUsuario' AND contrasena = '$contrasena'";
+$nombreUsuario = $_POST['nombreUsuario']; // Asegúrate de validar y escapar los datos del usuario.
+$contrasena = $_POST['contrasena'];
+
+$sql = "SELECT id FROM administrador WHERE nombre_usuario = '$nombreUsuario' AND contrasena = '$contrasena'";
 $resultadoUsuario = $conn->query($sql);
 
-if ($resultadoUsuario !== false) {
-
-    if ($resultadoUsuario->num_rows > 0) {
-        $_SESSION['nombre_usuario'] = $nombreUsuario;
-        echo json_encode(array('success' => true, 'message' => 'Usuario encontrado'));
-    } else {
-        echo json_encode(array('success' => false, 'message' => 'Usuario no encontrado'));
-    }
+if ($resultadoUsuario !== false && $resultadoUsuario->num_rows > 0) {
+    $row = $resultadoUsuario->fetch_assoc();
+    $_SESSION['id_administrador'] = $row['id']; // Guarda el ID del administrador en la sesión.
+    $_SESSION['nombre_usuario'] = $nombreUsuario;
+    $response = array('success' => true, 'message' => 'Usuario encontrado');
+    echo json_encode($response);
 } else {
-    echo json_encode(array('success' => false, 'message' => 'Error en la consulta del usuario: ' . $conn->error));
+    $response = array('success' => false, 'message' => 'Usuario no encontrado');
+    echo json_encode($response);
 }
 
 $conn->close();
-?>
-
 ?>

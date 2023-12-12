@@ -69,6 +69,8 @@ function obtenerProveedores() {
     });
 }
 
+
+
 function obtenerProductos(idProveedor) {
     $.ajax({
         url: 'obtener_productos.php',
@@ -97,6 +99,10 @@ function obtenerProductos(idProveedor) {
         }
     });
 }
+
+
+
+
 function obtenerStock() {
     $.ajax({
         url: 'obtener_stock.php',
