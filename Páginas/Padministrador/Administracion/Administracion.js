@@ -10,6 +10,7 @@ function mostrarSeccion(idSeccion) {
 }
 mostrarSeccion('modificarBoleta');
 
+
 function cerrarSesion() {
     fetch('cerrarsesion.php?cerrar_sesion=true', {
         method: 'GET'
@@ -22,7 +23,6 @@ function cerrarSesion() {
     })
     .then(data => {
         if (data.success) {
-            // Redireccionar a la página de inicio
             window.location.replace('/ServiExpress/Páginas/index.html');
         } else {
             console.error(data.message);
@@ -45,24 +45,22 @@ $(document).ready(function() {
             console.error('Error al obtener los datos: ' + error);
         }
     });
+
     $('#tablaBoletas').on('click', '.editar-btn', function(event) {
         const fila = $(this).closest('tr');
         const idBoleta = fila.find('.id-boleta').text();
         const nombreCliente = fila.find('.nombre-cliente').text();
         const fechaEmision = fila.find('.fecha-emision').text();
         const monto = fila.find('.monto').text();
-
- 
         $('#idBoleta').val(idBoleta);
         $('#nombreCliente').val(nombreCliente);
         $('#fechaEmision').val(fechaEmision);
         $('#monto').val(monto);
 
-     a
         $('#tablaBoletas').hide();
         $('#formularioEdicion').show();
 
-        $('.card').show(); 
+        $('.card').show();
     });
 
     // Manejar el envío del formulario de edición
@@ -80,7 +78,10 @@ $(document).ready(function() {
                 monto: monto
             },
             success: function(response) {
+                window.alert("Actualizacion de Boleta exitosa");
                 console.log(response); 
+                location.reload();
+
             },
             error: function(xhr, status, error) {
                 console.error('Error al actualizar los datos: ' + error);
@@ -91,10 +92,12 @@ $(document).ready(function() {
     $('#volverBtn').click(function() {
         $('#formularioEdicion').hide();
         $('#tablaBoletas').show();
-        $('.card').hide(); 
-
+        $('.card').hide();
     });
 });
+
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -114,17 +117,44 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch("verservicios.php") 
         .then(response => response.text())
         .then(data => {
-        tablaServicios.innerHTML = data;
-
-        asignarEventosEditar();
+            tablaServicios.innerHTML = data;
+            asignarEventosEditar();
+            asignarEventosEliminar();
          })
         .catch(error => {
-        console.error("Error al obtener servicios:", error);
-     });
+            console.error("Error al obtener servicios:", error);
+        });
     }
 
+    function eliminarServicio(idServicio) {
+        const formData = new FormData();
+        formData.append('idServicio', idServicio);
+        formData.append('eliminarServicio', true); // Parámetro para identificar la acción de eliminar
 
+        fetch("actualizarservicio.php", {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data); // Muestra la respuesta del servidor en la consola (para verificar)
+            window.alert("Servicio eliminado correctamente");
+            mostrarServicios(); // Vuelve a cargar la lista de servicios después de eliminar
+        })
+        .catch(error => {
+            console.error("Error al eliminar servicio:", error);
+        });
+    }
 
+    function asignarEventosEliminar() {
+        eliminarBotones.forEach(function(btn) {
+            btn.addEventListener("click", function(e) {
+                const idServicio = e.target.getAttribute("data-id");
+                console.log("Botón de eliminación clickeado para el servicio con ID:", idServicio);
+                eliminarServicio(idServicio);
+            });
+        });
+    }
 
     $('#tablaServicios').on('click', '.editar-btn-servicio', function(event) {
         const fila = $(this).closest('tr');
@@ -171,25 +201,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     asignarEventosEliminar();
 
-
-
-    function eliminarServicio(idServicio) {
-        fetch("eliminarservicio.php", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: 'idServicio=' + idServicio
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data); // Mensaje de éxito o error desde el servidor
-            mostrarServicios();
-        })
-        .catch(error => {
-            console.error("Error al eliminar servicio:", error);
-        });
-    }
 
     // Función para guardar los cambios en un servicio
     function guardarCambiosServicio() {

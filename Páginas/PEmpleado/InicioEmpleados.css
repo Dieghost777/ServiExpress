@@ -1,331 +1,187 @@
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #36393f; /* Color de fondo principal */
-    color: #ffffff; /* Color del texto principal */
-}
-
-header {
-    background-color: #2f3136; /* Color de fondo para el encabezado */
-    color: #ffffff; /* Color del texto en el encabezado */
-    padding: 10px 0;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px 0;
     text-align: center;
-}
-
-.navbar-brand {
-    color: yellow;
-
+  }
+  
+  .navbar-brand {
     font-size: 24px;
     font-weight: bold;
-}
-
-.navbar-nav {
-    margin-left: auto;
-}
-
-.nav-link {
-    color: #ffffff; /* Color de enlaces en el encabezado */
-    margin-right: 20px;
-}
-
-/* Estilos para el menú lateral */
-.sidenav {
+  }
+  
+  .sidenav {
     height: 100%;
-    width: 200px;
+    width: 250px;
     position: fixed;
-    z-index: 1;
     top: 0;
     left: 0;
-    background-color: #2f3136; /* Color de fondo para el menú lateral */
-    overflow-x: hidden;
-    padding-top: 20px;
-    border-right: 5px solid #ffc107; /* Borde amarillo */
-}
-
-.sidenav a {
-    padding: 10px 20px; /* Ajuste de relleno */
-    text-decoration: none;
-    font-size: 18px;
-    color: #ffffff;
+    background-color: #fff;
+    padding-top: 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidenav a {
     display: block;
-    transition: background-color 0.3s, color 0.3s; /* Transición suave */
-    border-bottom: 1px solid #000000; /* Línea separadora negra */
-}
-
-.sidenav a:first-child {
-    border-top: 1px solid #000000; /* Línea separadora negra para el primer elemento */
-}
-
-.sidenav a:hover {
-    background-color: #677bc4; /* Color de fondo al pasar el mouse */
-}
-
-.sidenav .cerrar-sesion {
-    margin-top: 20px;
-}
-
-/* Estilos para el contenido principal */
-.main {
-    margin-left: 220px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s;
+  }
+  
+  .sidenav a:hover {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .main {
+    margin-left: 250px;
     padding: 20px;
-    background-color: #36393f; /* Color de fondo para el contenido principal */
-    color: #ffffff; /* Color del texto en el contenido principal */
-}
-
-
-
-
-
-
-
-/* Estilos para div */ 
-
-
-
-/* Estilos para el formulario generarOrdenPedido */
-#generarOrdenPedido {
-    background-color: #272727; /* Color de fondo */
-    padding: 20px;
-    color: #ffffff; /* Color del texto */
-    border-radius: 5px; /* Bordes redondeados */
-    margin-top: 20px;
-}
-
-#generarOrdenPedido h3 {
-    color: #ffffff; /* Color del texto del título */
-    margin-bottom: 10px;
-}
-
-#generarOrdenPedido select,
-#generarOrdenPedido input[type="number"] {
-    width: calc(100% - 20px); /* Ajuste del ancho */
+  }
+  
+  /* Estilos para el formulario */
+  input[type="text"],
+  input[type="number"] {
+    width: calc(100% - 10px);
     padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #cccccc; /* Borde del campo */
-    border-radius: 5px; /* Bordes redondeados */
-    color: #ffffff; /* Color del texto en campos */
-    background-color: #333333; /* Color de fondo del campo (gris oscuro) */
-}
-
-#generarOrdenPedido button {
-    padding: 10px 20px; /* Ajuste del relleno */
-    background-color: #7289da; /* Color de fondo del botón */
-    color: #ffffff; /* Color del texto del botón */
-    border: none; /* Quitar borde */
-    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #boton-solicitar {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s; /* Transición suave */
-}
-
-#generarOrdenPedido button:hover {
-    background-color: #677bc4; /* Cambio de color al pasar el mouse */
-}
-
-#generarOrdenPedido #mensaje-error,
-#generarOrdenPedido #mensaje-exito {
-    margin-top: 10px; /* Espaciado superior */
-    color: #ffffff; /* Color del texto para mensajes de error y éxito */
-}
-
-
-
-
-
-
-
-/*Estilos para Boletas*/
-
-
-/* Estilos para la tabla de boletas */
-#verBoletas {
-    padding: 20px;
-    background-color: #333333; /* Color de fondo más oscuro */
-    color: #ffffff; /* Color del texto */
-    border-radius: 10px; /* Bordes redondeados */
-}
-
-#verBoletas h2 {
-    color: #ffffff; /* Color del texto del título */
-    margin-bottom: 10px;
-}
-
-#nombreClienteBoletas {
+  }
+  
+  #boton-solicitar:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Estilos para las tablas */
+  table {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #555555; /* Borde del campo más oscuro */
-    border-radius: 5px; /* Bordes redondeados */
-    color: #ffffff; /* Color del texto en campos */
-    background-color: #444444; /* Color de fondo más oscuro */
-}
-
-#tablaBoletas {
-    width: 100%;
-    border-collapse: collapse; /* Colapso de bordes de la tabla */
+    border-collapse: collapse;
     margin-top: 20px;
-    border-radius: 10px; /* Bordes redondeados para la tabla */
-    overflow: hidden; /* Ocultar los bordes redondeados fuera de la tabla */
-}
-
-#tablaBoletas th,
-#tablaBoletas td {
-    border: 1px solid #555555; /* Borde de las celdas más oscuro */
+  }
+  
+  th,
+  td {
+    border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    color: #ffffff; /* Color del texto en celdas */
-}
-
-#tablaBoletas th {
-    background-color: #555555; /* Color de fondo más oscuro para las celdas de encabezado */
-    font-weight: bold;
-}
-
-#tablaBoletas tbody tr:nth-child(even) {
-    background-color: #666666; /* Color de fondo más oscuro para filas pares */
-}
-
-#tablaBoletas tbody tr:hover {
-    background-color: #777777; /* Cambio de color al pasar el mouse */
-}
-
-
-
-
-
-
-
-
-
-
-/*Style datos cliente*/
-
-
-#verDatosClientes {
-    display: none;
+  }
+  
+  th {
+    background-color: #3498db;
     color: white;
-    border-radius: 10px;
-}
-
-#verDatosClientes h1 {
-    color: white;
-}
-
-#inputBuscarCliente {
-    background-color: #333;
-    color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-#tablaClientes {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #444;
-    border-radius: 10px;
-}
-
-#tablaClientes th,
-#tablaClientes td {
+  }
+  #generarOrdenPedido {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  #generarOrdenPedido .seccion {
+    margin-bottom: 30px;
+  }
+  
+  #generarOrdenPedido h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  #generarOrdenPedido select,
+  #generarOrdenPedido input[type="number"] {
+    width: calc(100% - 30px);
     padding: 10px;
-    border-bottom: 1px solid #666;
-}
-
-#tablaClientes th {
-    background-color: #333;
-    border-radius: 10px 10px 0 0;
-}
-
-#tablaClientes tbody tr:nth-child(even) {
-    background-color: #555;
-}
-
-#tablaClientes tbody tr:hover {
-    background-color: #666;
-    border-radius: 10px;
-}
-
-
-/*Style para las reservas*/ 
-
-
-#verServiciosReservados {
-    display: none;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  #generarOrdenPedido select:focus,
+  #generarOrdenPedido input[type="number"]:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+  
+  #generarOrdenPedido #boton-solicitar {
+    background-color: #3498db;
     color: white;
-    border-radius: 10px;
-}
-
-#verServiciosReservados h1 {
-    color: white;
-}
-
-#filtroNombre {
-    background-color: #333;
-    color: white;
-    padding: 8px;
     border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-#tablaReservas {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #444;
-    border-radius: 10px;
-}
-
-#tablaReservas th,
-#tablaReservas td {
-    padding: 10px;
-    border-bottom: 1px solid #666;
-}
-
-#tablaReservas th {
-    background-color: #333;
-    border-radius: 10px 10px 0 0;
-}
-
-#tablaReservas tbody tr:nth-child(even) {
-    background-color: #555;
-}
-
-#tablaReservas tbody tr:hover {
-    background-color: #666;
-    border-radius: 10px;
-}
-
-
-#datosEmpleado {
+    border-radius: 6px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  #generarOrdenPedido #boton-solicitar:hover {
+    background-color: #2980b9;
+  }
+  
+  #generarOrdenPedido .mensaje {
+    margin-top: 15px;
     display: none;
-    color: white;
+    font-size: 16px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .employee-data {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .employee-data h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .card {
+    background-color: #f9f9f9;
     border-radius: 10px;
-}
-
-#datosEmpleado h1 {
-    color: white;
-}
-
-.card {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
-.info {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 500px;
+    margin: 0 auto;
+  }
+  
+  .card strong {
+    display: block;
     margin-bottom: 10px;
-}
-
-.info strong {
-    display: inline-block;
-    width: 150px;
     font-weight: bold;
-}
-
-.info span {
-    display: inline-block;
-}
+    color: #555;
+  }
+  
+  .card span {
+    color: #777;
+    font-size: 18px;
+  }
+  

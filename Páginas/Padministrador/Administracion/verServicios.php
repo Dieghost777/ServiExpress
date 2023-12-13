@@ -25,7 +25,6 @@ if ($result->num_rows > 0) {
         echo "<td class='tiempo-estimado'>" . $row['Tiempo_estimado'] . "</td>";
         echo "<td>";
         echo "<button class='editar-btn-servicio' data-id='" . $row['id_servicio'] . "'>Editar</button>";
-        echo "<button class='eliminar-servicio-btn' data-id='" . $row['id_servicio'] . "'>Eliminar</button>";
         echo "</td>";
         echo "</tr>";
     }

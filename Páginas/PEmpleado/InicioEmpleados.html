@@ -37,7 +37,7 @@
 
     <div class="sidenav">
         <a href="#" onclick="mostrarSeccion('generarOrdenPedido')">Generar orden de pedido</a>
-        <a href="#" onclick="mostrarSeccion('verBoletas')">Ver Boletas</a>
+        <a href="#" onclick="mostrarSeccion('verBoletas')">Ver Boletas cliente</a>
         <a href="#" onclick="mostrarSeccion('verServiciosReservados')">Ver Servicios Reservados de Clientes</a>
         <a href="#" onclick="mostrarSeccion('verDatosClientes')">Ver Datos de Clientes</a>
         <a href="#" onclick="mostrarSeccion('datosEmpleado')">Ver Tus Datos</a>
@@ -48,37 +48,36 @@
     <div class="main">
 
 
+     
 
-        <div id="generarOrdenPedido" style="display: none;">
-            <div class="seleccion-proveedor">
+        <div class="card" id="generarOrdenPedido" style="display: none;">
+            <div class="seccion seleccion-proveedor">
                 <h3>Selecciona un proveedor:</h3>
-                <select id="proveedores">
-                </select>
+                <select id="proveedores"></select>
             </div>
         
-            <div class="seleccion-producto">
+            <div class="seccion seleccion-producto">
                 <h3>Selecciona un producto del proveedor:</h3>
-                <select id="productos">
-              
-                </select>
+                <select id="productos"></select>
             </div>
         
-            <div class="stock-producto">
+            <div class="seccion stock-producto">
                 <h3>Stock del producto solicitado:</h3>
                 <p>Stock disponible: <span id="stock-disponible"></span></p>
             </div>
-                
-            <div class="ingresa-cantidad">
+        
+            <div class="seccion ingresa-cantidad">
                 <h3>Ingresa la cantidad deseada:</h3>
                 <input type="number" id="cantidad-deseada" min="1" max="100"> 
                 <p class="mensaje-error-cantidad"></p>
             </div>
-   
         
             <button id="boton-solicitar">Solicitar</button>
-            <div id="mensaje-error" style="display: none; color: red;"></div>
-            <div id="mensaje-exito" style="display: none; color: green;"></div>
+            <div class="mensaje" id="mensaje-error" style="display: none; color: red;"></div>
+            <div class="mensaje" id="mensaje-exito" style="display: none; color: green;"></div>
         </div>
+        
+        
 
 
 
@@ -125,36 +124,36 @@
             </table>
         </div>
         
-        <div id="datosEmpleado" style="display: none;">
-            <h1>Datos del Empleado</h1>
-            <div class="card">
-                <div class="info">
-                    <strong>Nombre:</strong>
-                    <span id="nombre"></span>
-                </div>
-                <div class="info">
-                    <strong>Apellido Paterno:</strong>
-                    <span id="apellidoPaterno"></span>
-                </div>
-                <div class="info">
-                    <strong>Apellido Materno:</strong>
-                    <span id="apellidoMaterno"></span>
-                </div>
-                <div class="info">
-                    <strong>Cargo:</strong>
-                    <span id="cargo"></span>
-                </div>
-                <div class="info">
-                    <strong>RUT:</strong>
-                    <span id="rut"></span>
-                </div>
-                <div class="info">
-                    <strong>Correo:</strong>
-                    <span id="correo"></span>
-                </div>
-            </div>
+   <div id="datosEmpleado" style="display: none;">
+    <h1>Datos del Empleado</h1>
+    <div class="card">
+        <div class="info">
+            <strong>Nombre:</strong>
+            <span id="nombre"></span>
         </div>
-        
+        <div class="info">
+            <strong>Apellido Paterno:</strong>
+            <span id="apellidoPaterno"></span>
+        </div>
+        <div class="info">
+            <strong>Apellido Materno:</strong>
+            <span id="apellidoMaterno"></span>
+        </div>
+        <div class="info">
+            <strong>Cargo:</strong>
+            <span id="cargo"></span>
+        </div>
+        <div class="info">
+            <strong>RUT:</strong>
+            <span id="rut"></span>
+        </div>
+        <div class="info">
+            <strong>Correo:</strong>
+            <span id="correo"></span>
+        </div>
+    </div>
+</div>
+
 
 
         

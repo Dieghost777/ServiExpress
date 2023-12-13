@@ -1,255 +1,266 @@
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
+/* Variables */
+:root {
+    --primary-color: #3498db; /* Azul */
+    --secondary-color: #ffffff; /* Blanco */
+    --tertiary-color: #e74c3c; /* Rojo */
+    --text-color: #333; /* Gris oscuro */
+    --bg-color: #f5f5f5; /* Gris claro */
+    --border-radius: 6px;
+  }
+  
+  /* General */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #36393f; /* Color de fondo principal */
-    color: #ffffff; /* Color del texto principal */
-}
-
-header {
-    background-color: #2f3136; /* Color de fondo para el encabezado */
-    color: #ffffff; /* Color del texto en el encabezado */
-    padding: 10px 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  /* Header */
+  header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
     text-align: center;
-}
-
-.navbar-brand {
-    color: yellow;
-
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.navbar-nav {
-    margin-left: auto;
-}
-
-.nav-link {
-    color: #ffffff; /* Color de enlaces en el encabezado */
-    margin-right: 20px;
-}
-
-/* Estilos para el menú lateral */
-.sidenav {
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  /* Side Navigation */
+  .sidenav {
     height: 100%;
-    width: 200px;
+    width: 250px;
     position: fixed;
-    z-index: 1;
     top: 0;
     left: 0;
-    background-color: #2f3136; /* Color de fondo para el menú lateral */
-    overflow-x: hidden;
-    padding-top: 20px;
-    border-right: 5px solid #ffc107; /* Borde amarillo */
-}
-
-.sidenav a {
-    padding: 10px 20px; /* Ajuste de relleno */
+    background-color: var(--secondary-color);
+    padding-top: 60px;
+    transition: width 0.3s;
+    overflow-y: auto;
+  }
+  
+  .sidenav a {
+    padding: 10px 20px;
     text-decoration: none;
     font-size: 18px;
-    color: #ffffff;
+    color: var(--text-color);
     display: block;
-    transition: background-color 0.3s, color 0.3s; /* Transición suave */
-    border-bottom: 1px solid #000000; /* Línea separadora negra */
-}
-
-.sidenav a:first-child {
-    border-top: 1px solid #000000; /* Línea separadora negra para el primer elemento */
-}
-
-.sidenav a:hover {
-    background-color: #677bc4; /* Color de fondo al pasar el mouse */
-}
-
-.sidenav .cerrar-sesion {
-    margin-top: 20px;
-}
-
-/* Estilos para el contenido principal */
-.main {
-    margin-left: 220px;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .selected {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .main {
+    margin-left: 250px;
     padding: 20px;
-    background-color: #36393f; /* Color de fondo para el contenido principal */
-    color: #ffffff; /* Color del texto en el contenido principal */
-}
+    transition: margin-left 0.3s;
+  }
+  
+  /* Table Styling */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  /* Form Styling */
+  #formDatosUsuario {
+    max-width: 400px;
+    margin-top: 20px;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
 
 
-
-
-
-/* Estilos para el formulario de confirmación de entrega */
-#confirmarEntrega {
-    display: none;
-    padding: 40px;
-    margin-top: 40px;
-    border: 1px solid #72767d;
-    border-radius: 8px;
-    background-color: #36393f;
-    max-width: 600px;
-    margin: 0 auto;
+  #confirmarEntrega {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 #confirmarEntrega h2 {
-    font-size: 32px;
-    color: #ffffff;
-    margin-bottom: 30px;
+    color: var(--text-color);
+    font-size: 1.8em;
+    margin-bottom: 10px;
 }
 
-#formConfirmarEntrega label {
-    display: block;
-    margin-bottom: 15px;
-    color: #ffffff;
-}
-
-#formConfirmarEntrega input[type="date"],
-#formConfirmarEntrega select {
-    width: calc(100% - 20px);
-    padding: 15px;
+#confirmarEntrega form {
     margin-bottom: 20px;
-    border: 1px solid #72767d;
-    border-radius: 5px;
-    background-color: #202225;
-    color: #ffffff;
 }
 
-#formConfirmarEntrega button {
-    background-color: #5865f2;
-    color: #ffffff;
-    padding: 15px 20px;
+#confirmarEntrega label {
+    color: var(--text-color);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#confirmarEntrega input[type="date"],
+#confirmarEntrega select {
+    width: calc(100% - 22px);
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+#confirmarEntrega button {
+    padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
+    background-color: var(--primary-color);
 }
 
-#formConfirmarEntrega button:hover {
-    background-color: #6e86d6;
+#confirmarEntrega button:hover {
+    background-color: var(--tertiary-color);
 }
 
 
-/* Estilos para la tabla de órdenes de pedido */
 #verOrdenesPedido {
-    display: none;
-    padding: 30px;
-    margin-top: 30px;
-    border-radius: 15px;
-    background-color: #36393f;
-    max-width: 90%;
-    margin: 0 auto;
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 #verOrdenesPedido h2 {
-    font-size: 32px;
-    color: #ffffff;
-    margin-bottom: 30px;
+    color: var(--text-color);
+    font-size: 1.8em;
+    margin-bottom: 10px;
 }
 
 .table {
-    border-radius: 15px;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: var(--border-radius);
     overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-.table thead th {
-    background-color: #5865f2;
-    color: #ffffff;
-    border: none;
+.table thead {
+    background-color: var(--primary-color);
+    color: white;
 }
 
-.table tbody tr {
-    background-color: #202225;
-    color: #ffffff;
+.table th,
+.table td {
+    padding: 10px;
+    text-align: left;
 }
 
-.table tbody tr:nth-child(even) {
-    background-color: #2f3136;
+.table th:first-child,
+.table td:first-child {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+
+.table th:last-child,
+.table td:last-child {
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 }
 
 
-
-/* Estilos para el formulario de registro de productos */
 #registrarProducto {
-    display: none;
-    padding: 30px;
-    margin-top: 30px;
-    border-radius: 15px;
-    background-color: #36393f;
-    max-width: 60%;
-    margin: 0 auto;
-}
-
-#registrarProducto .card {
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #2f3136;
-    color: #ffffff;
-    padding: 30px;
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 #registrarProducto h2 {
-    font-size: 32px;
-    color: #ffffff;
-    margin-bottom: 30px;
+    color: var(--text-color);
+    font-size: 1.8em;
+    margin-bottom: 20px;
 }
 
-#formularioProducto label {
-    color: #ffffff;
-    margin-bottom: 10px;
-    display: block;
+#formularioProducto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#formularioProducto label,
+#formularioProducto input[type="text"],
+#formularioProducto input[type="submit"] {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 300px;
 }
 
 #formularioProducto input[type="text"],
 #formularioProducto input[type="submit"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: var(--border-radius);
     border: 1px solid #ccc;
-    background-color: #202225;
-    color: #ffffff;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
 }
 
-#formularioProducto input[type="submit"] {
-    background-color: #5865f2;
-    border: none;
-    cursor: pointer;
-}
-
+#formularioProducto input[type="text"]:focus,
 #formularioProducto input[type="submit"]:hover {
-    background-color: #454dfe;
+    outline: none;
+    border-color: var(--primary-color);
 }
 
-/* Estilos para los datos del usuario */
-#verDatosUsuario {
-    display: none;
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #36393f;
-    border-radius: 15px;
-}
-
-#verDatosUsuario h2 {
-    color: #ffffff;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-#datosUsuarioDiv {
-    background-color: #2f3136;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para los datos mostrados */
-#datosUsuarioDiv span {
-    display: block;
-    margin-bottom: 10px;
-    color: #ffffff;
-}
-
-#datosUsuarioDiv strong {
-    color: #ffffff;
-    font-weight: bold;
+#mensajeError {
+    color: rgb(241, 0, 0);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    text-align: center;
 }

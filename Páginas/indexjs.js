@@ -52,7 +52,7 @@ function verificarExistenciaUsuario() {
                 }
             } else {
                 console.error('Usuario no encontrado');
-                // Manejar el error según sea necesario
+                $('#mensajeError ').show(); // Mostrar el mensaje de error
             }
         },
         error: function(error) {

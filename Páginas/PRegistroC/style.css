@@ -1,87 +1,68 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #36393f; /* Color de fondo principal de Discord */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    background-color: #f5f5f5;
 }
-
 
 .container {
     max-width: 600px;
-    margin: 50px auto;
-    background-color: #fff;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
     text-align: center;
-    color: #36393f; /* Cambiado a un tono oscuro */
+    margin-bottom: 30px;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0;
+}
+
+.nav-pills .nav-item a {
+    color: #333;
 }
 
 .form-group {
     margin-bottom: 20px;
 }
 
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #36393f; /* Cambiado a un tono oscuro */
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-input {
+.btn-primary,
+.btn-success {
     width: 100%;
     padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-button {
-    padding: 10px;
-    cursor: pointer;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .btn-primary {
-    background-color: #7289da; /* Cambiado a un tono de color Discord */
+    background-color: #007bff;
     color: #fff;
 }
 
-.btn-secondary {
-    background-color: #677bc4; /* Cambiado a un tono de color Discord */
-    color: #fff;
-}
-
-.btn-submit {
-    background-color: #43b581; /* Cambiado a un tono de color Discord */
+.btn-success {
+    background-color: #28a745;
     color: #fff;
 }
 
 .error-message {
     color: red;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
-.error-message-red {
+#errores-registro,
+#errores-registro-datos-usuario {
     color: red;
     margin-top: 10px;
-}
-.back-to-login {
-    text-decoration: none;
-    background-color: #43b581; /* Cambiado a un tono de color Discord */
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 5px;
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.mr-2 {
-    margin-right: 0.5rem;
 }
